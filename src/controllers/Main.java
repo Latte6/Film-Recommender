@@ -23,26 +23,29 @@ public class Main
 		}
 	}
 	
-	public static void Menu()
-	{
-		System.out.println("1. Create User");
-		System.out.println("2. Get User by First Name");
-		System.out.println("3  delete User");
-		System.out.println("4. Add Movie");
-		System.out.println("5. Add Ratings");
-		System.out.println("6. Store");
-		System.out.println("7. Exit");
-		
-	}
-	
+	//Main run
 	public static void main(String[] args) throws Exception 
 	{
 		Main api = new Main();
-		String /* users*/fName, lName, gender, age, job,/* movies*/ name, date, link ;
 		
-		long /*ratings*/ filmId , UserId;;
+		//Variables for user
+		String fName ;
+		String lName;
+		String gender;
+		String age;
+		String job;
+		
+		//Variables for film
+		String name;
+		String date;
+		String link;
+		
+		//Variables for rating
+		
+		long  filmId; 
+		long UserId;
 		int choice=0;
-		double /*ratings*/rateingLeft;
+		double rating;
 		char answer;
 		
 	
@@ -75,30 +78,30 @@ public class Main
 		break;
 		
 		case 2:
-			 System.out.println("Get user by name: ");
+			 System.out.println("Get user by their first name: ");
 			 fName = EasyScanner.nextString();
 	         api.getUserByfName(fName);
 	         api.getAllUsers();
 		break;
 		
 		case 3:
-			  System.out.println("Please enter the name of who you want to remove: ");
+			  System.out.println("Please type in the first name of user you wish to remove: ");
 		      fName = EasyScanner.nextString();
 		      api.deleteUser(fName);
 		      
 		break;
 		
 		case 4:			
-			   System.out.println("Enter the movie Id: ");
+			   System.out.println("Enter the film Unique Identifiquer: ");
 		       filmId = EasyScanner.nextLong();
 		       
-			   System.out.println("Enter the movie Title: ");
+			   System.out.println("Enter the title of the film: ");
 		       name = EasyScanner.nextString();
 		        
-		       System.out.println("Enter date movie was releasd: ");
+		       System.out.println("Enter the date the film was realeased [dd/mmm/yyy]: ");
 		       date = EasyScanner.nextString();
 		       
-		       System.out.println("Enter url link of movie: ");
+		       System.out.println("Enter url link of the film you wish to add: ");
 		       link = EasyScanner.nextString();
 		       
 		       api.addFilm(filmId, name, date, link);
@@ -106,20 +109,20 @@ public class Main
 		break;
 				
 		case 5:		     
-			   System.out.println("Enter your user ID: ");
+			   System.out.println("Enter your user Unique Identifiquer: ");
 		       UserId = EasyScanner.nextLong();
 		       
-		       System.out.println("Enter movie ID: ");
+		       System.out.println("Enter film Unique Identifiquer: ");
 		       filmId = EasyScanner.nextLong();
 		        
-		       System.out.println("Enter ratings: ");
-		       rateingLeft = EasyScanner.nextDouble();
+		       System.out.println("Enter rating: ");
+		       rating = EasyScanner.nextDouble();
 		       
-		       api.addRatings(UserId, filmId,  rateingLeft);
+		       api.addRatings(UserId, filmId,  rating);
 		break;
 			
 		case 6:
-			 System.out.println("Would you like to store the data entered? [y/n]: ");
+			 System.out.println("Would you like to save current data entered? Type Yes[Y/N]No: ");
 			 answer = EasyScanner.nextChar();
 			 if (answer == 'y' || answer == 'Y')
 			 {
@@ -128,11 +131,11 @@ public class Main
 		break;
 			
 		case 7:
-			 System.out.println("Thank you. Goodbye");
+			 System.out.println("Thank you for using this awesome system, hope to see you again.");
 		break;
 			
 		default:
-			 System.out.println("Please ONLY choose options 1-7 .Thank you");
+			 System.out.println("Please choose of one of the following options 1-7.");
 		break;
 		}
 		
@@ -140,6 +143,7 @@ public class Main
 	
 }
 
+	//Creating Rating
 	private void addRatings(long UserId, long movieId, double rateingLeft) {
 		Optional<Films> ratings = Optional.fromNullable(film.getMovie(movieId));
 		if(ratings.isPresent())
@@ -149,6 +153,7 @@ public class Main
 		
 	}
 
+	//Removing user
 	private void deleteUser(String fName) {
 		Optional<User> user = Optional.fromNullable(film.getUserByfName(fName));
 		if(user.isPresent())
@@ -158,22 +163,26 @@ public class Main
 		
 	}
 
+	//Getting all users
 	private void getAllUsers() {
 		Collection<User> user = film.getUsers();
 		System.out.println(user);
 	}
 
+	//Getting User by first name
 	private void getUserByfName(String fName) {
 		User user = film.getUserByfName(fName);
 		System.out.println(user);
 		
 	}
 
+	//Adding user
 	private void addUser(String fName, String lName, String age, String gender, String job) {
 		film.createUser(fName, lName, age, gender, job);
 		
 	}
 
+	//Adding film
 	private void addFilm(long Id, String name, String date, String link) {
 		Optional<User> movies = Optional.fromNullable(film.getUser(Id));
 		if(movies.isPresent())
@@ -182,4 +191,17 @@ public class Main
 		}
 		
 	}
+
+	//Menu
+		public static void Menu()
+		{
+			System.out.println("1. Create User");
+			System.out.println("2. Get User by First Name");
+			System.out.println("3  Remove User");
+			System.out.println("4. Add Film");
+			System.out.println("5. Add Ratings");
+			System.out.println("6. Store/Save");
+			System.out.println("7. Exit");
+			
+		}
 }

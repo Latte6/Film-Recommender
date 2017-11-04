@@ -26,12 +26,14 @@ public class FilmsAPI implements FilmAPIInterface
 	 
 	 public FilmsAPI() 
 	 {}
-	 
+
+	 //Serializer
 	 public FilmsAPI(Serializer serializer)
 	  {
 	    this.serializer = serializer;
 	  }
-	 
+
+	 //Exception
 	 @SuppressWarnings("unchecked")
 	  public void load() throws Exception
 	  {
@@ -43,6 +45,7 @@ public class FilmsAPI implements FilmAPIInterface
 	     }
 	  }
 	 
+	 //Exception
 	 void store() throws Exception
 	  {
 	 
@@ -51,13 +54,13 @@ public class FilmsAPI implements FilmAPIInterface
 		  serializer.write();
 	 }
 	 
-
+	 //Collection
 	  public Collection<User> getUsers ()
 	  {
 	    return userIndex.values();
 	  }
 
-  
+	  //Constructor
 @Override
   public User createUser(String fName, String lName, String age, String gender, String job ) 
   {
@@ -67,16 +70,19 @@ public class FilmsAPI implements FilmAPIInterface
     return user;
   }
   
+	//Getting user by their first name
   public User getUserByfName(String fName) {
 		
 		return fNameIndex.get(fName) ;
 	}
-  
+
+  //Getting user by their id
   public User getUser(Long id) 
   {
 	  return userIndex.get(id);
   }
 
+  //Removing user by id
   @Override
   public void deleteUser(Long id) 
   {
@@ -84,7 +90,8 @@ public class FilmsAPI implements FilmAPIInterface
 	  fNameIndex.remove(user.fName);
   }
   
-public  void deleteUsers() 
+  //Removing user form array
+  public  void deleteUsers() 
   {
 	  userIndex.clear();
 	  fNameIndex.clear();

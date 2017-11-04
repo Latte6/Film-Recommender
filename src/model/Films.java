@@ -19,15 +19,16 @@ public String Name;
  public List<Rating> film  = new ArrayList<>();
 	 
 	
-
-public Films( String name, String date, String link) {
+ 	//Construcotr
+ 	public Films( String name, String date, String link) {
 	
 	this.FilmId = counter ++;
 	this.Name = name;
 	this.date = date;
 	this.link = link;
 	}
-	 
+	
+	//ToString
 	@Override
 	public String toString()
 	{

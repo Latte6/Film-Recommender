@@ -11,7 +11,7 @@ import static models.Fixtures.users;
 
 public class UserTest
 {
-  User homer = new User ("homer", "simpson", "32",  "male", "power plant");
+  User homer = new User ("homer", "simpson", "32",  "male", "Destroying Springfield");
 
   @Test
   public void testCreate()
@@ -37,6 +37,6 @@ public class UserTest
   @Test
   public void testToString()
   {
-    assertEquals ("User{" + homer.UserId + ", homer, simpson, 32, male , power plant}", homer.toString());
+    assertEquals ("User{" + homer.UserId + ", homer, simpson, 32, male , Destroying Springfield}", homer.toString());
   }
 }

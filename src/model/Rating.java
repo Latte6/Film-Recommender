@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import com.google.common.base.Objects;
 
 public class Rating {
-
-	public long Id;
+		//Variables
+	 public long Id;
 	 static Long   counter = 0l;
 	 
-	 public Long userId , filmId ;
+	 public Long userId;
+	 public Long filmId ;
 	 public double rating ;
 	 
 	 public ArrayList<Films> route = new ArrayList<Films>();
@@ -21,7 +22,8 @@ public class Rating {
 	 {
 		 
 	 }
-
+	 //Constructor
+	 
 	public Rating(  Long userId, Long filmId, double rating) 	
 	{
 		this.userId = userId;
@@ -29,7 +31,8 @@ public class Rating {
 		this.rating = rating;
 		this.Id = counter ++;
 	}
-	 
+	
+	//ToString
 	@Override
 	public String toString()
 	{
@@ -41,12 +44,14 @@ public class Rating {
 	 
 	 }
 	
+	//Hashcode
 	@Override  
 	public int hashCode()  
 	{  
 	   return Objects.hashCode(this.filmId, this.userId, this.rating, this.Id  );  
 	}
 
+	//Boolean
 	@Override
 	public boolean equals(final Object obj)
 	{

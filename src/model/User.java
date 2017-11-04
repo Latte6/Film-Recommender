@@ -8,18 +8,24 @@ import com.google.common.base.Objects;
 
 
 public class User {
-	
- public String fName, lName, Age, Gender, Job ;
- public long UserId;
-public static Long   counter = 0l;
+	//Variables for User
+	 public String fName;
+	 public String lName;
+	 public String Age;
+	 public String Gender;
+	 public String Job ;
+	 public long UserId;
+	 public static Long   counter = 0l;
  
- public Map<Long , Films> movies = new HashMap<Long , Films>();
+	 //Map
+	 public Map<Long , Films> movies = new HashMap<Long , Films>();
  
- public User() {
+	 public User() {
 
  }
 
-public User(String fName, String lName, String age, String gender, String job ) {
+	 //Construcotr
+	 public User(String fName, String lName, String age, String gender, String job ) {
 	
 	this.fName = fName;
 	this.lName = lName;
@@ -28,9 +34,9 @@ public User(String fName, String lName, String age, String gender, String job ) 
 	this.Job = job;
 	this.UserId = counter++ ;
 }
-
+	 //ToString
 @Override
-public String toString()
+	public String toString()
 {
   return toStringHelper(this).addValue(fName)
                              .addValue(lName)
@@ -41,15 +47,16 @@ public String toString()
                              .toString();
 }
 
-
+	//Hashcode
 @Override  
-public int hashCode()  
+	public int hashCode()  
 {  
    return Objects.hashCode(this.fName, this.lName, this.Age, this.Gender , this.Job);  
 }
 
+	//Boolean
 @Override  
-public boolean equals(final Object obj)
+	public boolean equals(final Object obj)
 {
 	if (obj instanceof User)
 	{
